@@ -1,0 +1,300 @@
+{
+  "gameTitle": "Night flight",
+  "loading": "Loading city",
+  "title": {
+    "startKeyboard": "Press Enter to start",
+    "startController": "Press A to start"
+  },
+  "hangar": {
+    "heading": null,
+    "stats": {
+      "speed": "Speed",
+      "handling": "Handling",
+      "armour": "Armour",
+      "weapons": "Weapons"
+    },
+    "hints": {
+      "change": "Change jet",
+      "fly": "Fly",
+      "back": "Go back"
+    },
+    "gunLabel": "Guns",
+    "weaponLabel": "Second weapon"
+  },
+  "jets": {
+    "f16": {
+      "name": "F-16 Fighting Falcon",
+      "blurb": "The F-16 is a single-engine fighter. In this game, it turns quickly but cannot take much damage."
+    },
+    "f18": {
+      "name": "F/A-18 Hornet",
+      "blurb": "The Hornet is a twin-engine fighter built for carrier operations. In this game, it handles well and has balanced armour and weapons."
+    },
+    "f14": {
+      "name": "F-14 Tomcat",
+      "blurb": "The Tomcat is a carrier fighter with wings that sweep back. In this game, they sweep automatically as you speed up, but tight turns are not its strength."
+    },
+    "mig29": {
+      "name": "MiG-29",
+      "blurb": "The MiG-29 is a Soviet twin-engine fighter. In this game, it turns as quickly as the F-16 and takes slightly more damage."
+    },
+    "f22": {
+      "name": "F-22 Raptor",
+      "blurb": "The Raptor is a stealth fighter. In this game, it combines high speed with tight turns and strong weapons."
+    },
+    "f117": {
+      "name": "F-117 Nighthawk",
+      "blurb": "The Nighthawk is a stealth attack jet built to carry bombs. In this game, it is the slowest jet, with strong armour and weapons."
+    },
+    "sr71": {
+      "name": "SR-71 Blackbird",
+      "blurb": "The Blackbird is an unarmed reconnaissance jet built for high speeds and altitudes. In this game, it is one of the fastest jets, but needs the most room to turn."
+    },
+    "protoA": {
+      "name": "X-81",
+      "blurb": "This prototype interceptor has forward-swept wings and blue-lit intakes. It makes the tightest turns of any jet, but has light armour."
+    },
+    "protoB": {
+      "name": "X-82",
+      "blurb": "This hypersonic prototype has a long, flat body shaped like an arrowhead. It is the fastest jet available, but turns slowly."
+    },
+    "protoC": {
+      "name": "X-83",
+      "blurb": "This flying-wing prototype has four buried engines and two large gun pods. It is heavy and slow to turn, with the strongest armour and weapons available."
+    },
+    "alien": {
+      "name": "Captured alien fighter",
+      "blurb": "The military captured this alien fighter and learned to fly it. It is fast and heavily armed, and turns as tightly as the most agile jet."
+    }
+  },
+  "hud": {
+    "speed": "Speed (kt)",
+    "altitude": "Altitude (ft)",
+    "boost": "Boost",
+    "health": "Damage",
+    "kills": "Aliens shot down",
+    "locked": "Target locked",
+    "weaponReady": "{weapon} ready",
+    "weaponReloading": "{weapon} reloading",
+    "weaponCharging": "Charging {weapon}",
+    "locks": "Targets locked: {n}"
+  },
+  "warnings": {
+    "pullUp": "Pull up",
+    "turnBack": "Turn back"
+  },
+  "events": {
+    "crashed": "You crashed.",
+    "shotDown": "You were shot down.",
+    "respawn": "Reappearing in {n}",
+    "controllerConnected": "Controller connected"
+  },
+  "pause": {
+    "heading": "Paused",
+    "resume": "Resume",
+    "changeJet": "Change jet",
+    "controls": "Controls",
+    "invertPitch": "Invert pitch",
+    "sound": "Sound",
+    "on": "On",
+    "off": "Off",
+    "quit": "Return to title"
+  },
+  "controls": {
+    "heading": "Controls",
+    "keyboard": "Keyboard\nW/S or Up/Down: Pitch\nA/D or Left/Right: Roll\nQ/E: Yaw\nShift: Boost\nX: Brake\nSpace: Fire guns\nF: Fire missile\nC: Change camera\nEsc: Pause\n\nBy default, W or Up points the nose down. S or Down points it up. Turn on Invert pitch to reverse this.",
+    "controller": "Controller\nleft stick: Pitch and roll\nLB/RB: Yaw\nRT: Boost\nLT: Brake\nA: Fire guns\nB: Fire missile\nY: Change camera\nright stick: Look around\nStart: Pause\n\nBy default, pushing the left stick forward points the nose down. Pulling it back points the nose up. Turn on Invert pitch to reverse this.",
+    "actions": {
+      "pitch": "Pitch",
+      "roll": "Roll",
+      "yaw": "Yaw",
+      "boost": "Boost",
+      "brake": "Brake",
+      "guns": "Fire guns",
+      "missile": "Fire second weapon",
+      "camera": "Change camera",
+      "look": "Look around",
+      "pause": "Pause"
+    },
+    "specialNote": "Your second weapon depends on the jet you fly."
+  },
+  "weapons": {
+    "missile": {
+      "name": "Homing missile",
+      "about": "The missile follows the alien fighter you lock onto."
+    },
+    "volley": {
+      "name": "Missile volley",
+      "about": "Four small homing missiles fire together and track up to four separate alien fighters in front of you."
+    },
+    "rail": {
+      "name": "Rail gun",
+      "about": "After a short charge, the rail gun fires a straight beam that destroys every alien fighter in its path until it hits a building or the alien ship."
+    },
+    "flak": {
+      "name": "Explosive shells",
+      "about": "Three shells explode as they pass near alien fighters and damage every fighter around each blast."
+    },
+    "orb": {
+      "name": "Energy ball",
+      "about": "A slow ball of energy follows the alien fighter you lock onto and destroys nearby fighters in a large blast."
+    }
+  },
+  "guns": {
+    "cannon": "Cannons",
+    "rotary": "Twin rotary cannons",
+    "plasma": "Energy guns"
+  },
+  "radio": {
+    "speakers": {
+      "control": "Control",
+      "ground": "Ground"
+    },
+    "ambient": [
+      {
+        "speaker": "control",
+        "text": "The ship is still over the city centre."
+      },
+      {
+        "speaker": "ground",
+        "text": "The guns are firing at the ship."
+      },
+      {
+        "speaker": "ground",
+        "text": "Our searchlights are sweeping the sky."
+      },
+      {
+        "speaker": "control",
+        "text": "Alien fighters are patrolling in groups of three."
+      },
+      {
+        "speaker": "ground",
+        "text": "We still have five rooftops burning."
+      },
+      {
+        "speaker": "ground",
+        "text": "The fire engines are below the burning rooftops."
+      },
+      {
+        "speaker": "ground",
+        "text": "Police cars are moving through the streets."
+      },
+      {
+        "speaker": "ground",
+        "text": "Smoke is rising from the burning rooftops."
+      },
+      {
+        "speaker": "control",
+        "text": "There are flashes beyond the horizon."
+      },
+      {
+        "speaker": "ground",
+        "text": "We can see fires in the distance."
+      }
+    ],
+    "kill": [
+      {
+        "speaker": "control",
+        "text": "Confirmed, you shot down an alien fighter."
+      },
+      {
+        "speaker": "control",
+        "text": "We saw that alien fighter go down."
+      },
+      {
+        "speaker": "control",
+        "text": "An alien fighter is down."
+      },
+      {
+        "speaker": "control",
+        "text": "That alien fighter is down, confirmed."
+      },
+      {
+        "speaker": "control",
+        "text": "Your shots brought that alien fighter down."
+      }
+    ],
+    "hit": [
+      {
+        "speaker": "control",
+        "text": "You are taking fire."
+      },
+      {
+        "speaker": "control",
+        "text": "An alien fighter is firing at you."
+      },
+      {
+        "speaker": "control",
+        "text": "We can see you taking hits."
+      },
+      {
+        "speaker": "control",
+        "text": "Your jet is taking fire."
+      }
+    ],
+    "nearShip": [
+      {
+        "speaker": "ground",
+        "text": "The searchlights are sweeping under the ship."
+      },
+      {
+        "speaker": "control",
+        "text": "The core is hanging below the ship."
+      },
+      {
+        "speaker": "ground",
+        "text": "The core is still glowing teal."
+      },
+      {
+        "speaker": "ground",
+        "text": "The guns are firing up at the ship."
+      }
+    ],
+    "respawn": [
+      {
+        "speaker": "control",
+        "text": "You are back in the air."
+      },
+      {
+        "speaker": "control",
+        "text": "We can see you flying again."
+      },
+      {
+        "speaker": "ground",
+        "text": "We can see your jet again."
+      },
+      {
+        "speaker": "control",
+        "text": "Confirmed, you are flying again."
+      }
+    ],
+    "rain": [
+      {
+        "speaker": "ground",
+        "text": "The rain has started."
+      },
+      {
+        "speaker": "control",
+        "text": "There is lightning over the city."
+      },
+      {
+        "speaker": "ground",
+        "text": "We can hear thunder."
+      }
+    ],
+    "blackout": [
+      {
+        "speaker": "ground",
+        "text": "The power just went out in this district."
+      },
+      {
+        "speaker": "control",
+        "text": "A district has lost power."
+      },
+      {
+        "speaker": "ground",
+        "text": "The lights just went out around us."
+      }
+    ]
+  }
+}

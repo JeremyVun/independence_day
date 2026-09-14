@@ -1,0 +1,116 @@
+{
+  "gameTitle": "Night flight",
+  "loading": "Loading city",
+  "title": {
+    "startKeyboard": "Press Enter to start",
+    "startController": "Press A to start"
+  },
+  "hangar": {
+    "heading": null,
+    "stats": {
+      "speed": "Speed",
+      "handling": "Handling",
+      "armour": "Armour",
+      "weapons": "Weapons"
+    },
+    "hints": {
+      "change": "Change jet",
+      "fly": "Fly",
+      "back": "Go back"
+    }
+  },
+  "jets": {
+    "f16": {
+      "name": "F-16 Fighting Falcon",
+      "blurb": "The F-16 is a single-engine fighter. In this game, it turns quickly but cannot take much damage."
+    },
+    "f18": {
+      "name": "F/A-18 Hornet",
+      "blurb": "The Hornet is a twin-engine fighter built for carrier operations. In this game, it handles well and has balanced armour and weapons."
+    },
+    "f14": {
+      "name": "F-14 Tomcat",
+      "blurb": "The Tomcat is a carrier fighter with wings that sweep back. In this game, they sweep automatically as you speed up, but tight turns are not its strength."
+    },
+    "mig29": {
+      "name": "MiG-29",
+      "blurb": "The MiG-29 is a Soviet twin-engine fighter. In this game, it turns as quickly as the F-16 and takes slightly more damage."
+    },
+    "f22": {
+      "name": "F-22 Raptor",
+      "blurb": "The Raptor is a stealth fighter. In this game, it combines high speed with tight turns and strong weapons."
+    },
+    "f117": {
+      "name": "F-117 Nighthawk",
+      "blurb": "The Nighthawk is a stealth attack jet built to carry bombs. In this game, it is the slowest jet, with strong armour and weapons."
+    },
+    "sr71": {
+      "name": "SR-71 Blackbird",
+      "blurb": "The Blackbird is an unarmed reconnaissance jet built for high speeds and altitudes. In this game, it is one of the fastest jets, but needs the most room to turn."
+    },
+    "protoA": {
+      "name": "X-81",
+      "blurb": "This prototype interceptor has forward-swept wings and blue-lit intakes. It makes the tightest turns of any jet, but has light armour."
+    },
+    "protoB": {
+      "name": "X-82",
+      "blurb": "This hypersonic prototype has a long, flat body shaped like an arrowhead. It is the fastest jet available, but turns slowly."
+    },
+    "protoC": {
+      "name": "X-83",
+      "blurb": "This flying-wing prototype has four buried engines and two large gun pods. It is heavy and slow to turn, with the strongest armour and weapons available."
+    },
+    "alien": {
+      "name": "Captured alien fighter",
+      "blurb": "The military captured this alien fighter and learned to fly it. It is fast and heavily armed, and turns as tightly as the most agile jet."
+    }
+  },
+  "hud": {
+    "speed": "Speed (kt)",
+    "altitude": "Altitude (ft)",
+    "boost": "Boost",
+    "health": "Damage",
+    "missileReady": "Missile ready",
+    "missileReloading": "Missile reloading",
+    "kills": "Aliens shot down",
+    "locked": "Target locked"
+  },
+  "warnings": {
+    "pullUp": "Pull up",
+    "turnBack": "Turn back"
+  },
+  "events": {
+    "crashed": "You crashed.",
+    "shotDown": "You were shot down.",
+    "respawn": "Reappearing in {n}",
+    "controllerConnected": "Controller connected"
+  },
+  "pause": {
+    "heading": "Paused",
+    "resume": "Resume",
+    "changeJet": "Change jet",
+    "controls": "Controls",
+    "invertPitch": "Invert pitch",
+    "sound": "Sound",
+    "on": "On",
+    "off": "Off",
+    "quit": "Return to title"
+  },
+  "controls": {
+    "heading": "Controls",
+    "keyboard": "Keyboard\nW/S or Up/Down: Pitch\nA/D or Left/Right: Roll\nQ/E: Yaw\nShift: Boost\nX: Brake\nSpace: Fire guns\nF: Fire missile\nC: Change camera\nEsc: Pause\n\nBy default, W or Up points the nose down. S or Down points it up. Turn on Invert pitch to reverse this.",
+    "controller": "Controller\nleft stick: Pitch and roll\nLB/RB: Yaw\nRT: Boost\nLT: Brake\nA: Fire guns\nB: Fire missile\nY: Change camera\nright stick: Look around\nStart: Pause\n\nBy default, pushing the left stick forward points the nose down. Pulling it back points the nose up. Turn on Invert pitch to reverse this.",
+    "actions": {
+      "pitch": "Pitch",
+      "roll": "Roll",
+      "yaw": "Yaw",
+      "boost": "Boost",
+      "brake": "Brake",
+      "guns": "Fire guns",
+      "missile": "Fire missile",
+      "camera": "Change camera",
+      "look": "Look around",
+      "pause": "Pause"
+    }
+  }
+}

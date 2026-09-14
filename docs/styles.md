@@ -1,0 +1,21 @@
+# Visual language
+
+"Remembered 90s": the shapes of a 1997 console game, lit the way a kid remembers it.
+
+- **Geometry**: chunky, faceted, flat-shaded. Buildings are stacked prisms with setbacks; jets are lofted low-poly hulls. No smooth normals on hard-surface models.
+- **Night palette**: deep navy zenith, warm brown light pollution at the horizon, orange sodium street light, mixed warm and cool window light. Colour is light, not paint: surfaces stay dark and emissive sources carry the image.
+- **Light sources are HDR**: windows, lamps, nav lights and flames exceed 1.0 so bloom picks them up. Bloom threshold ~1.0; everything else stays under it.
+- **Haze**: analytic exponential height fog shared by every shader (`src/core/atmosphere.ts`). Additive lights fade by fog transmittance instead of mixing toward fog colour.
+- **The ship's light**: the core is a small, bright teal point with a modest glow; its teal light on the city and its light shafts are subtle. Gameplay lights (fires, afterburners, explosions) light their own block, never a whole street.
+- **Searchlights**: a beam's brightness follows the local haze, so beams are strongest near the ground and in rain, and noise fixed in world space makes them sweep through dust. Where a beam meets the ship it leaves a soft pool on the hull plating, never a sprite.
+- **The ship's size**: distance fades the hull toward the city's warm haze, so the far rim is softer than the near edge, and low cloud hangs under the rim.
+- **A city under attack**: a few burning rooftops send up dark smoke columns lit orange from below; police cars and fire engines flash red and blue; districts lose power (windows, signs, crowns and street lamps go dark, a few rooms keep a dim warm light) and flicker back.
+- **Beyond the horizon**: flashes and burning glows past the horizon and faint far tracer fire. The suburbs follow varied street angles, never one grid.
+- **Landmarks**: a few floodlit tower crowns, mostly warm white or gold; saturated crown colours are rare. Coloured signs appear only at street level, on a minority of commercial facades.
+- **Windows up close**: lit windows show blinds, curtains or a centre mullion and are brighter near the ceiling; unlit windows are dark glass reflecting the sky, distant lit windows, the street glow and the ship's core, each pane slightly out of plane, never grey tiles. Walls carry faint rain streaks and window frames up close.
+- **Hangar**: the city beyond the open doors is live (beams sweep, rain falls); distant blasts and thunder shake dust from the roof and make the lamps stutter.
+- **Jets**: panel lines and panel-to-panel shade variation in object space, a cool moonlit rim to separate the silhouette from the city, orange city bounce underneath. Cruise exhaust is a dull glow; only afterburner is bright.
+- **Reflections**: the river and the hangar turntable are planar mirrors rendered at reduced resolution. River reflections streak vertically and ripple; enemy fighters are left out of reflections for cost.
+- **Weather**: cycles clear, clouding, rain and clearing over several minutes. Rain is a downpour, not a drizzle: buildings dissolve into dark murk within a couple of kilometres, but the city's lights keep shining through as soft haloed points (fog that swallows them reads as a black screen), the sky becomes a dark overcast, every light gains a scattered halo, drops are 2 px screen-aligned streaks (lamp-lit near the street, dimmer at flight speed so they never fill the frame) with rain sheets beyond, and droplets bead on the canopy in cockpit view. The rain murk is dark, never milky: fog, cloud interiors and halos stay below the brightness that reads as a white-out. Lightning lights the sky and fog toward the bolt (usually ahead of the player) and the ship's hull; the rest of the frame only flickers. Low cloud banks always drift through the city; flying into one hazes the screen.
+- **Shader rule**: `GLSL_COMMON` declares the shared atmosphere uniforms; a shader that includes it must not redeclare them (a duplicate compiles to an error and the mesh silently disappears).
+- **Final image**: ACES tone map, cool shadows and warm highlights, faint lens fringe at the corners, soft vignette, fine film grain (also dithers dark gradients), radial speed blur while boosting.
