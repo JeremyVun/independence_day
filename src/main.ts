@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { AudioEngine, type FlightSound } from './audio/audio';
 import { Input } from './core/input';
+import { DynamicResolution } from './core/quality';
 import { Renderer } from './core/renderer';
 import { ROSTER } from './aircraft/roster';
 import { LiveBackdrop } from './scenes/backdrop';
@@ -30,6 +31,12 @@ const ui = document.getElementById('ui') as HTMLElement;
 const renderer = new Renderer(canvas);
 renderer.gl.info.autoReset = false;
 renderer.rays.source.copy(SHIP_CORE);
+const forcedRatio = params.has('ratio') ? Number(params.get('ratio')) : null;
+if (forcedRatio) {
+  renderer.pixelRatio = forcedRatio;
+  renderer.resize();
+}
+const quality = forcedRatio ? null : new DynamicResolution(renderer);
 const input = new Input();
 const audio = new AudioEngine();
 const size = new THREE.Vector2();
@@ -313,7 +320,8 @@ let last = performance.now();
 const t0 = last;
 
 function frame(now: number) {
-  const dt = fixedTime !== null ? 1 / 60 : Math.min((now - last) / 1000, 0.05);
+  const frameMs = now - last;
+  const dt = fixedTime !== null ? 1 / 60 : Math.min(frameMs / 1000, 0.05);
   last = now;
   const time = fixedTime ?? (now - t0) / 1000;
   const cpu0 = performance.now();
@@ -339,9 +347,11 @@ function frame(now: number) {
   renderer.setSpeedBlur(flight && !paused && flight.rig.mode !== 'flyby' ? flight.player.flight.boost * 0.25 : 0);
   renderer.rays.enabled = mode?.scene === world.scene;
   if (mode) renderer.render(mode.scene, mode.camera, time);
+  const cpuMs = performance.now() - cpu0;
+  quality?.frame(frameMs, cpuMs);
   if (params.has('shot')) {
     const info = renderer.gl.info.render;
-    window.__stats = { calls: info.calls, tris: info.triangles, points: info.points, cpuMs: +(performance.now() - cpu0).toFixed(2) };
+    window.__stats = { calls: info.calls, tris: info.triangles, points: info.points, cpuMs: +cpuMs.toFixed(2), ratio: renderer.pixelRatio };
   }
   window.__frames = ++frames;
   if (frames === 3) window.__ready = true;

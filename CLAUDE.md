@@ -11,7 +11,7 @@ Browser night-city flight game (Three.js + TypeScript + Vite). Overview: `docs/p
 
 ## Query params
 
-- `scene=title|hangar|flight|jets|city` (default title), `jet=<id>`, `t=<fixed seconds>`, `shot` (set by the tools).
+- `scene=title|hangar|flight|jets|city` (default title), `jet=<id>`, `t=<fixed seconds>`, `shot` (set by the tools), `ratio=<pixel ratio>` (fixes the render scale and disables the automatic step-down in `src/core/quality.ts`; `window.__stats.ratio` reports the live value).
 - flight: `pos=x,y,z`, `hdg=deg`, `bank=deg`, `freeze`, `cam=chase|cockpit|flyby`, `aggro`, `alienNear`, `canopy` (cockpit frame, a feature flag that is off by default).
 - jets: `jet=<id|all>`, `view=az,el,dist`, `throttle`, `boost`. city: `cam=x,y,z,yawDeg,pitchDeg`.
 

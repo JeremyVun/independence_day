@@ -1,10 +1,45 @@
 import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { FullScreenQuad, Pass } from 'three/addons/postprocessing/Pass.js';
 import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+import { CopyShader } from 'three/addons/shaders/CopyShader.js';
 import { atmosphere } from './atmosphere';
 import { GodRaysPass } from './godRays';
+
+// Renders the scene into its own multisampled target and resolves it once. three.js resolves a multisampled
+// target at the end of every render() call, so if the composer's ping-pong buffers were multisampled the god-rays
+// and bloom composites would each pay a full-screen resolve too, roughly doubling the frame cost.
+class ScenePass extends Pass {
+  scene = new THREE.Scene();
+  camera: THREE.Camera = new THREE.PerspectiveCamera();
+  private target: THREE.WebGLRenderTarget;
+  private copy = new THREE.ShaderMaterial({ ...CopyShader, uniforms: THREE.UniformsUtils.clone(CopyShader.uniforms) });
+  private quad = new FullScreenQuad(this.copy);
+
+  constructor(width: number, height: number) {
+    super();
+    this.target = new THREE.WebGLRenderTarget(width, height, { type: THREE.HalfFloatType, samples: 4 });
+  }
+
+  setSize(width: number, height: number) {
+    this.target.setSize(width, height);
+  }
+
+  render(renderer: THREE.WebGLRenderer, writeBuffer: THREE.WebGLRenderTarget) {
+    renderer.setRenderTarget(this.target);
+    renderer.render(this.scene, this.camera);
+    this.copy.uniforms.tDiffuse.value = this.target.texture;
+    renderer.setRenderTarget(this.renderToScreen ? null : writeBuffer);
+    this.quad.render(renderer);
+  }
+
+  dispose() {
+    this.target.dispose();
+    this.copy.dispose();
+    this.quad.dispose();
+  }
+}
 
 const FinalShader = {
   uniforms: {
@@ -94,7 +129,7 @@ export class Renderer {
   readonly bloom: UnrealBloomPass;
   readonly final: ShaderPass;
   readonly rays: GodRaysPass;
-  private renderPass: RenderPass;
+  private scenePass: ScenePass;
   pixelRatio: number;
 
   constructor(canvas: HTMLCanvasElement) {
@@ -111,13 +146,10 @@ export class Renderer {
     this.gl.outputColorSpace = THREE.LinearSRGBColorSpace;
 
     const size = this.gl.getDrawingBufferSize(new THREE.Vector2());
-    const target = new THREE.WebGLRenderTarget(size.x, size.y, {
-      type: THREE.HalfFloatType,
-      samples: 4,
-    });
+    const target = new THREE.WebGLRenderTarget(size.x, size.y, { type: THREE.HalfFloatType, depthBuffer: false });
     this.composer = new EffectComposer(this.gl, target);
-    this.renderPass = new RenderPass(new THREE.Scene(), new THREE.PerspectiveCamera());
-    this.composer.addPass(this.renderPass);
+    this.scenePass = new ScenePass(size.x, size.y);
+    this.composer.addPass(this.scenePass);
     this.rays = new GodRaysPass(size.x, size.y);
     this.composer.addPass(this.rays);
     this.bloom = new UnrealBloomPass(new THREE.Vector2(size.x, size.y), 0.5, 0.6, 0.95);
@@ -157,8 +189,8 @@ export class Renderer {
       camera.aspect = aspect;
       camera.updateProjectionMatrix();
     }
-    this.renderPass.scene = scene;
-    this.renderPass.camera = camera;
+    this.scenePass.scene = scene;
+    this.scenePass.camera = camera;
     this.rays.camera = camera;
     this.final.uniforms.uTime.value = time;
     this.composer.render();
